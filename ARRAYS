@@ -1,0 +1,100 @@
+import java.util.*;
+
+public class ArrayProblems {
+
+    // 1. Find the Largest Element in an Array
+    static int findLargest(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max)
+                max = arr[i];
+        }
+        return max;
+    }
+
+    // 2. Find the Smallest Element in an Array
+    static int findSmallest(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min)
+                min = arr[i];
+        }
+        return min;
+    }
+
+    // 3. Reverse an Array
+    static void reverseArray(int[] arr) {
+        int start = 0, end = arr.length - 1;
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    // 4. Check if Array is Sorted
+    static boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1])
+                return false;
+        }
+        return true;
+    }
+
+    // 5. Find Sum of All Elements
+    static int arraySum(int[] arr) {
+        int sum = 0;
+        for (int num : arr)
+            sum += num;
+        return sum;
+    }
+
+    // 6. Count Even and Odd Numbers
+    static void countEvenOdd(int[] arr) {
+        int even = 0, odd = 0;
+        for (int num : arr) {
+            if (num % 2 == 0)
+                even++;
+            else
+                odd++;
+        }
+        System.out.println("Even: " + even + ", Odd: " + odd);
+    }
+
+    // 7. Find Second Largest Element
+    static int secondLargest(int[] arr) {
+        int largest = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+
+        for (int num : arr) {
+            if (num > largest) {
+                second = largest;
+                largest = num;
+            } else if (num > second && num != largest) {
+                second = num;
+            }
+        }
+        return second;
+    }
+
+    // Main method to test all problems
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 5, 8, 30};
+
+        System.out.println("1. Largest: " + findLargest(arr));
+        System.out.println("2. Smallest: " + findSmallest(arr));
+
+        reverseArray(arr);
+        System.out.println("3. Reversed Array: " + Arrays.toString(arr));
+
+        System.out.println("4. Is Sorted: " + isSorted(arr));
+        System.out.println("5. Sum: " + arraySum(arr));
+
+        System.out.print("6. ");
+        countEvenOdd(arr);
+
+        System.out.println("7. Second Largest: " + secondLargest(arr));
+    }
+}
